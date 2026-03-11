@@ -408,7 +408,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;o
       <button class="m-close" onclick="closeModal('res-ov')">✕</button>
     </div>
     <div class="m-body" id="res-body" style="padding:0">
-      <div id="cse-results" style="padding:8px 12px"></div>
+      <div class="gcse-searchresults-only" data-gname="cse-search" data-as_sitesearch="discogs.com"></div>
     </div>
   </div>
 </div>
@@ -1503,10 +1503,6 @@ document.addEventListener('click',e=>{
 },true);
 </script>
 
-<!-- Google CSE Widget (free, no API key needed) -->
-<script async src="https://cse.google.com/cse.js?cx=9709efdbb25cc4f48"></script>
-<div class="gcse-searchresults-only" data-gname="cse-search" data-as_sitesearch="discogs.com" style="display:none"></div>
-
 <style>
 /* Style the CSE results to match VinylVault dark theme */
 .gsc-control-cse{background:transparent!important;border:none!important;padding:0!important}
@@ -1523,26 +1519,11 @@ document.addEventListener('click',e=>{
 .gs-image-box{display:none!important}
 .gsc-orderby-container{display:none!important}
 .gcsc-find-more-on-google-root,.gcsc-more-maybe-branding-root{display:none!important}
-/* Move rendered CSE results into the modal */
 .gsc-results-wrapper-overlay{display:none!important}
+.gsc-modal-background-image{display:none!important}
 </style>
 
-<script>
-// After CSE loads, move its rendered output into the modal container
-window.__gcse=window.__gcse||{};
-window.__gcse.searchCallbacks={
-  web:{
-    rendered:function(){
-      // Move CSE results into the modal body
-      const src=document.querySelector('.gsc-results-wrapper-nooverlay,.gsc-results-wrapper-visible');
-      const dest=document.getElementById('cse-results');
-      if(src&&dest){
-        dest.innerHTML='';
-        dest.appendChild(src.cloneNode(true));
-      }
-    }
-  }
-};
-</script>
+<!-- Google CSE Widget (free, no API key needed) -->
+<script async src="https://cse.google.com/cse.js?cx=9709efdbb25cc4f48"></script>
 </body>
 </html>
